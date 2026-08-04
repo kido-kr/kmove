@@ -1,0 +1,200 @@
+<!--
+  HTML5 문서라는 것을 브라우저에 알려줍니다.
+  HTML 파일의 가장 첫 줄에 작성합니다.
+-->
+<!DOCTYPE html>
+
+<!--
+  lang="ko"는 이 페이지의 기본 언어가 한국어라는 뜻입니다.
+-->
+<html lang="ko">
+
+<head>
+  <!-- 한글이 깨지지 않도록 문자 인코딩을 설정합니다. -->
+  <meta charset="UTF-8">
+
+  <!--
+    스마트폰이나 태블릿에서도 화면 크기에 맞게 표시되도록 합니다.
+  -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!-- 브라우저 탭에 표시되는 제목입니다. -->
+  <title>재고 관리 시스템</title>
+
+  <!--
+    현재 HTML 파일과 style.css 파일을 연결합니다.
+    이 줄이 있어야 style.css에 작성한 디자인이 적용됩니다.
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!--
+    container는 전체 내용을 감싸는 큰 상자입니다.
+    class는 CSS에서 디자인을 적용할 때 사용합니다.
+  -->
+  <main class="container">
+
+    <!-- 페이지의 가장 큰 제목입니다. -->
+    <h1>재고 관리 시스템</h1>
+
+    <!-- 상품을 입력하는 영역입니다. -->
+    <section class="product-form-section">
+
+      <h2>상품 추가</h2>
+
+      <!--
+        form은 여러 입력창을 하나의 입력 양식으로 묶어줍니다.
+
+        id="productForm"은 JavaScript에서 이 form을 찾을 때 사용합니다.
+      -->
+      <form id="productForm">
+
+        <!-- 상품 분류 선택 영역 -->
+        <div class="input-group">
+          <!--
+            for="category"는 아래 select의 id="category"와 연결됩니다.
+            '분류' 글자를 눌러도 선택창이 활성화됩니다.
+          -->
+          <label for="category">분류</label>
+
+          <!--
+            select는 여러 항목 중 하나를 선택하는 선택창입니다.
+
+            JavaScript는 id="category"를 이용해
+            사용자가 어떤 분류를 선택했는지 확인합니다.
+          -->
+          <select id="category">
+            <!-- value가 빈 문자열이므로 아직 분류를 선택하지 않은 상태입니다. -->
+            <option value="">분류를 선택하세요</option>
+
+            <!--
+              화면에는 '식품'이 보이지만,
+              JavaScript에서는 value인 food를 사용합니다.
+            -->
+            <option value="food">식품</option>
+            <option value="office">사무용품</option>
+            <option value="living">생활용품</option>
+            <option value="electronics">전자제품</option>
+          </select>
+        </div>
+
+        <!-- 상품명 입력 영역 -->
+        <div class="input-group">
+          <label for="productName">상품명</label>
+
+          <!--
+            type="text"는 일반 문자를 입력하는 칸입니다.
+
+            id="productName"을 이용해 JavaScript가
+            입력된 상품명을 가져옵니다.
+          -->
+          <input
+            type="text"
+            id="productName"
+            placeholder="상품명을 입력하세요"
+          >
+        </div>
+
+        <!-- 재고수량 입력 영역 -->
+        <div class="input-group">
+          <label for="stock">재고수량</label>
+
+          <!--
+            type="number"는 숫자를 입력하는 칸입니다.
+
+            min="0"은 브라우저 화면에서 음수 입력을 제한합니다.
+            다만 이것만 믿지 않고 JavaScript에서도 다시 검사합니다.
+          -->
+          <input
+            type="number"
+            id="stock"
+            min="0"
+            step="1"
+            placeholder="재고수량을 입력하세요"
+          >
+        </div>
+
+        <!-- 가격 입력 영역 -->
+        <div class="input-group">
+          <label for="price">가격</label>
+
+          <input
+            type="number"
+            id="price"
+            min="0"
+            step="1"
+            placeholder="가격을 입력하세요"
+          >
+        </div>
+
+        <!--
+          type="submit" 버튼을 누르면 form 제출 이벤트가 발생합니다.
+
+          JavaScript에서 이 제출 이벤트를 감지한 뒤
+          실제 상품 추가 기능을 실행합니다.
+        -->
+        <button type="submit">상품 추가</button>
+      </form>
+
+      <!--
+        상품 추가 성공 메시지나 오류 메시지가 표시되는 곳입니다.
+
+        처음에는 비어 있지만 JavaScript가 나중에 글자를 넣어줍니다.
+      -->
+      <p id="message"></p>
+    </section>
+
+    <!-- 등록된 상품을 보여주는 영역입니다. -->
+    <section class="product-list-section">
+
+      <h2>상품 목록</h2>
+
+      <!-- 상품 정보를 표 형태로 보여줍니다. -->
+      <table>
+
+        <!-- thead는 표의 제목 부분입니다. -->
+        <thead>
+          <tr>
+            <th>코드</th>
+            <th>상품명</th>
+            <th>재고수량</th>
+            <th>가격</th>
+            <th>분류</th>
+          </tr>
+        </thead>
+
+        <!--
+          tbody는 실제 상품 데이터가 들어가는 영역입니다.
+
+          JavaScript는 id="productTableBody"를 찾아
+          여기에 새로운 상품 행을 추가합니다.
+        -->
+        <tbody id="productTableBody">
+
+          <!--
+            아직 상품이 없을 때 보여주는 기본 문구입니다.
+
+            colspan="5"는 표의 다섯 칸을 하나로 합친다는 뜻입니다.
+          -->
+          <tr>
+            <td colspan="5">등록된 상품이 없습니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!--
+    HTML과 script.js를 연결합니다.
+
+    body의 마지막에 작성하면
+    HTML 요소가 먼저 만들어진 뒤 JavaScript가 실행됩니다.
+  -->
+  <script src="script.js"></script>
+</body>
+
+</html>
