@@ -3,14 +3,21 @@ teamproject
 
 ## 디렉토리 구조
 InventoryManagement/
+
 ├── index.html
+
 ├── css/
+
 │   └── style.css
+
 ├── js/
+
 │   └── script.js
+
 ├── data/
+
 │   └── inventory.csv
-│
+
 └── README.md
 
 ### index.html
