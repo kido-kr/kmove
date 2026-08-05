@@ -4,19 +4,31 @@ teamproject
 ## 디렉토리 구조
 InventoryManagement/
 
-├── index.html
-
-├── css/
-
-│   └── style.css
-
-├── js/
-
-│   └── script.js
-
 ├── data/
 
-│   └── inventory.csv
+│   └── inventory.csv              # 상품 데이터 저장 파일
+
+├── src/
+
+│   └── com/
+
+│       └── inventory/
+
+│           ├── Main.java          # 프로그램 진입점 (main 메서드)
+
+│           ├── model/
+
+│               └── Item.java      # 상품 데이터 구조 (상품코드, 상품명, 재고수량, 가격)
+
+│           ├── view/
+
+│               └── MainFrame.java # GUI 화면 구성 (JFrame 또는 JavaFX Stage)
+
+│           └── controller/
+
+│               └── InventoryController.java # 이벤트 처리 및 CSV 파일 입출력 로직
+
+├── .gitignore
 
 └── README.md
 
