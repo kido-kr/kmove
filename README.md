@@ -32,17 +32,22 @@ InventoryManagement/
 
 └── README.md
 
-### index.html
-메인 화면 파일 - 예정
+### data/
 
-### css/
-스타일시트 파일 모아두는 곳
-* style.css: 화면 디자인, 테이블 및 버튼 스타일, 반응형 레이아웃 관련 코드
+inventory.csv: 프로그램이 실행되거나 저장할 때 읽고 쓰는 실제 데이터 파일이 위치하는 곳입니다. 자바 코드로 data/inventory.csv 경로를 직접 지정해 읽고 쓸 수 있습니다.
 
-### js/
-자바스크립트 로직 파일 모아두는 곳
-* script.js: 상품 관리, 입출고 처리, 검색, 재고 계산, CSV 데이터 처리 등의 기능
+### src/com/inventory/
 
-### data/ 폴더
-애플리케이션에서 사용하는 데이터 파일을 보관하는 곳
-* inventory.csv: 상품코드, 상품명, 재고수량 등의 데이터 저장
+Main.java: 프로그램을 실행 파일
+
+#### model/
+
+재고 정보 관리
+
+#### view/
+
+화면
+
+#### controller/
+
+이건 저것 이벤트 처리
